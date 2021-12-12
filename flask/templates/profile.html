@@ -1,0 +1,26 @@
+{% extends 'users_header.html' %}
+
+{% block content %}
+    <div class="contenido">
+        Bien venido a tu perfil de usuario:
+    </div>
+    <div class="contenido">
+        <form id="formulario" action="/users/newEntry" method="post">
+            <div>
+                <label>Nombre:</label> {{ g.user.nombre | safe }}
+            </div>
+            <div>
+                <label>Apellidos:</label> {{ g.user.apellidos | safe }}
+            </div>
+            <div>
+                <label>Dirección:</label> {{ g.user.direccion | safe }}
+            </div>
+            <div>
+                <label>Correo:</label> {{ g.user.correo | safe }}
+            </div>
+            <div>
+                <label>Saldo:</label> {{ g.user.saldo | safe }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <header id="cabecera">
+        <div id="titulo">
+            <h1>AMAZON MAL</h1>
+        </div>
+        <div id="botonera">
+            <a href="{{ url_for('users.profile') }}">Ver mi perfil</a>
+            <a href="{{ url_for('users.products') }}">Catalogo</a>
+            <a href="{{ url_for('users.purchases') }}">Mis compras</a>
+            <a href="{{ url_for('users.logout') }}">Salir</a>
+        </div>
+    </header>
+{% endblock %}

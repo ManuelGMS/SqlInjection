@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pagetitle }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+    {% block header %}{% endblock %}
+
+    <main id="cuerpo">
+        <div class="tituloSeccion">
+            <h1>{{ pagename }}</h1>
+        </div>
+        {% block content %}{% endblock %}
+        {% if message %}
+        <div style="text-align: center;">
+            {{ message }}
+        </div>
+        {% endif %}
+    </main>
+
+</body>
+</html>

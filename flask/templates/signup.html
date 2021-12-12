@@ -1,0 +1,29 @@
+{% extends 'visitors_header.html' %}
+
+{% block content %}
+    <div class="contenido">
+        <form id="formulario" action="/visitors/createUser" method="post">
+            <div>
+                <label>Nombre:</label>
+                <input type="text" name="nombre" minlength="1" maxlength="30" required>
+            </div>
+            <div>
+                <label>Apellidos:</label> 
+                <input type="text" name="apellidos" minlength="1" maxlength="40" required>
+            </div>
+            <div>
+                <label>Direccion:</label>
+                <input type="text" name="direccion" minlength="1" maxlength="200" required>
+            </div>
+            <div>
+                <label>Correo:</label>
+                <input type="text" name="correo" minlength="1" maxlength="200" required>
+            </div>
+            <div>
+                <label>Contraseña:</label>
+                <input type="password" name="contraseña" minlength="8" maxlength="200" required>
+            </div>
+            <input type="submit" class="centrarBoton boton" value="Registrarme">
+        </form>
+    </div>
+{% endblock %}

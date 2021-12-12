@@ -1,0 +1,41 @@
+{% extends 'users_header.html' %}
+
+{% block content %}
+    <div class="contenido" style="height: 80%; overflow-y: scroll;">
+        
+        <div style="margin: 10px; padding: 10px; border: solid 1px; text-align: center;">
+            <form method="post">
+                <div>
+                    Mostrar productos comprados desde la fecha
+                    <input type="date" name="from" value="{{ sysdate }}">
+                    hasta la fecha
+                    <input type="date" name="to" value="{{ sysdate }}">
+                </div>
+                <br>
+                <input type="hidden" name="uid" value="{{ g.user.cod }}">
+                <input type="submit" value="Mostrar" class="centrarBoton boton">
+            </form>
+        </div>
+
+        {% if purchases %}
+            {% for purchase, products in purchases.items() %}
+                <div class="contenido" style="margin-bottom: 10px;">
+                    {% for product in products %}
+                        <div style="margin-top: 10px; margin-left: 10px; border: solid 1px;">
+                            <label>Nombre:</label> {{ product[2] }} <br>
+                            <label>Descripción:</label> {{ product[3] }} <br>
+                            <label>Precio:</label> {{ product[4] }} <br>
+                            <label>Cantidad:</label> {{ product[5] }} <br>
+                            <label>Sub-Total:</label> {{ product[6] }} <br>
+                        </div>
+                    {% endfor %}
+                    <div>
+                        <br>
+                        Coste total del pedido: {{ products[0][1] }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+{% endblock %}

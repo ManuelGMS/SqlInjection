@@ -1,0 +1,44 @@
+{% extends 'users_header.html' %}
+
+{% block content %}
+    <div class="contenido" style="height: 80%; overflow-y: scroll;">
+
+        <div style="margin-top: 10px; margin-left: 10px; border: solid 1px;">
+            <form action="/users/searchProduct" method="get">
+                <div style="display: flex;">
+                    <div style="flex-grow: 1; margin: 10px;">
+                        <label>Nombre del producto:</label>
+                        <input type="text" name="nombre" minlength="1" maxlength="20" required>
+                    </div>
+                    <div style="flex-grow: 1; margin: 10px;">
+                        <input type="submit" class="boton" value="Buscar">
+                    </div>
+                </div>
+            </form>
+            <hr>
+            {% if product %}
+            <div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div style="padding: 5px;">
+            {% for product in products %}
+            <div style="margin-top: 10px; margin-left: 10px; border: solid 1px;">
+                <label>Nombre:</label> {{ product[1] }} <br>
+                <label>Precio:</label> {{ product[2] }} <br>
+                <label>Unidades restantes:</label> {{ product[3] }} <br>
+                <label>Descripcion:</label> {{ product[4] }} <br>
+                <form id="Compra" action="{{ url_for('users.buyProducts', id_user=g.user.cod, id=product[0]) }}" method="GET">
+                    <div style="margin-top: 10px; margin-left: 10px;">
+                        <label>Unidades</label>
+                        <input type="number" class="input" name="quantity" value="0" min="0">
+                        <input type="submit" class="boton" value="Comprar">
+                    </div>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
